@@ -22,7 +22,7 @@ You may assume the array's length is at most 10,000.
 
 n=1
 
-x1 本身為距離最短
+x = x1 為距離最短
 
 
 n=2
@@ -36,7 +36,7 @@ n=3
 
 x1 x3 x2
 
-與x1 x2 距離最短為 x1 <= x <= x2 && x3距離最短為x3本身
+與x1 x2 距離最短為 x1 <= x <= x2 && x3距離最短為x3本身(x=x3)
 
 所以最短距離為x3
 
