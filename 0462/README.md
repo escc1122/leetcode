@@ -1,3 +1,4 @@
+# 462. Minimum Moves to Equal Array Elements II
 Given a non-empty integer array, find the minimum number of moves required to make all array elements equal, where a move is incrementing a selected element by 1 or decrementing a selected element by 1.
 
 You may assume the array's length is at most 10,000.
@@ -44,3 +45,67 @@ n=4 同 n=2
 
 
 n=5 同 n=3
+
+# =============================
+Runtime: 2 ms
+
+Memory Usage: 39.9 MB
+
+    public int minMoves2(int[] nums) {
+        Arrays.sort(nums);
+        int length = nums.length;
+        int m = nums[length/2];
+        int sum=0;
+        for (int j =0 ;j<length;j++){
+            sum = sum + Math.abs(nums[j]-m);
+        }
+        return sum;
+    }
+    
+Runtime: 3 ms
+
+Memory Usage: 39.6 MB  
+
+    public int minMoves2(int[] nums) {
+        Arrays.sort(nums);
+        int length = nums.length;
+        int m = nums[length/2];
+        int sum  = Arrays.stream(nums).reduce(0,(a,b)->{
+            return a+ Math.abs(b-m);
+        });
+        return sum;
+    }
+    
+Runtime: 4 ms
+
+Memory Usage: 39.6 MB
+
+    public int minMoves2(int[] nums) {
+        Arrays.sort(nums);
+        int i = nums[nums.length/2];
+        return Arrays.stream(nums).map(x -> Math.abs(x-i)).sum();
+    }
+
+
+Runtime: 10 ms
+
+Memory Usage: 40 MB 
+
+    public int minMoves2(int[] nums) {
+        Arrays.sort(nums);
+        int length = nums.length;
+        int m = nums[length/2];        
+        int sum=0;
+        sum = Arrays.stream(nums).parallel().map(x -> Math.abs(x-m)).sum();
+        return sum;
+    }
+
+Runtime: 15 ms
+
+Memory Usage: 40 MB
+
+    public int minMoves2(int[] nums) {
+        IntStream aaa = Arrays.stream(nums).sorted();
+        final int i = aaa.parallel().skip(nums.length/2).findFirst().getAsInt();
+        return Arrays.stream(nums).parallel().map(x -> Math.abs(x-i)).sum();
+    }
