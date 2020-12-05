@@ -109,3 +109,19 @@ Memory Usage: 40 MB
         final int i = aaa.parallel().skip(nums.length/2).findFirst().getAsInt();
         return Arrays.stream(nums).parallel().map(x -> Math.abs(x-i)).sum();
     }
+    
+# Go
+Runtime: 8 ms
+
+Memory Usage: 4.5 MB
+
+    func minMoves2(nums []int) int {
+        sort.Ints(nums)
+        m := nums[len(nums)/2]
+        var sum float64 = 0
+        for i:=0; i < len(nums); i++ {
+            sum = sum + math.Abs(float64(nums[i]-m))
+        }
+        return int(sum)
+    }
+    
