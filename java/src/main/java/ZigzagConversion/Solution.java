@@ -1,7 +1,7 @@
 package ZigzagConversion;
 
 /**
- * https://leetcode.com/problems/zigzag-conversion/submissions/
+ * https://leetcode.com/problems/zigzag-conversion/
  */
 class Solution {
     public String convert(String s, int numRows) {
